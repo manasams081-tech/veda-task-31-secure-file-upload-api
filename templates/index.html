@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VaultDrop · Secure File Upload API</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="VaultDrop home">
+      <span class="brand-mark">VD</span>
+      <span><strong>VaultDrop</strong><small>secure upload lab</small></span>
+    </a>
+    <div class="task-chip"><span class="pulse"></span> VEDA · TASK 31</div>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">PYTHON WEB SECURITY · FILE UPLOAD API</p>
+        <h1>Drop a file.<br><span>Keep the risk out.</span></h1>
+        <p class="hero-copy">A beginner-friendly secure upload service that validates type, size and content, sanitizes names, and stores files outside the application directory.</p>
+        <div class="proof-row">
+          <div><b>5 MB</b><span>size ceiling</span></div>
+          <div><b>{{ allowed_types|length }}</b><span>accepted formats</span></div>
+          <div><b>UUID</b><span>stored filenames</span></div>
+        </div>
+      </div>
+      <aside class="security-card">
+        <div class="shield">✓</div>
+        <div><span>STORAGE MODE</span><strong>External vault</strong><small>Outside the app path</small></div>
+      </aside>
+    </section>
+
+    <section class="workspace">
+      <div class="panel upload-panel">
+        <div class="panel-head">
+          <div><p class="kicker">01 · UPLOAD</p><h2>SecureDrop</h2></div>
+          <span class="api-tag">POST /api/upload</span>
+        </div>
+
+        <label id="dropzone" class="dropzone" for="fileInput">
+          <input id="fileInput" type="file" accept=".pdf,.png,.jpg,.jpeg,.gif,.txt,.csv">
+          <div class="drop-icon">↑</div>
+          <strong id="dropTitle">Choose a file or drag it here</strong>
+          <span id="dropMeta">PDF · PNG · JPG · GIF · TXT · CSV · max 5 MB</span>
+        </label>
+
+        <div class="validation-grid">
+          <div><span>✓</span><p><b>Extension</b><small>Allow-list checked</small></p></div>
+          <div><span>✓</span><p><b>MIME</b><small>Type cross-checked</small></p></div>
+          <div><span>✓</span><p><b>Content</b><small>Signature checked</small></p></div>
+          <div><span>✓</span><p><b>Filename</b><small>Sanitized + UUID</small></p></div>
+        </div>
+
+        <button id="uploadBtn" class="primary" disabled>Validate & store <span>→</span></button>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="panel vault-panel">
+        <div class="panel-head">
+          <div><p class="kicker">02 · VAULT</p><h2>Recent uploads</h2></div>
+          <button id="refreshBtn" class="ghost">Refresh</button>
+        </div>
+        <div id="fileList" class="file-list">
+          <div class="empty"><span>◌</span><p>Loading secure records…</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="architecture">
+      <div class="section-title"><p class="kicker">03 · SECURITY FLOW</p><h2>Every upload passes a short gate.</h2></div>
+      <div class="flow">
+        <div><span>01</span><b>Receive</b><small>Multipart file arrives at the API.</small></div>
+        <i>→</i>
+        <div><span>02</span><b>Validate</b><small>Size, extension, MIME and signature.</small></div>
+        <i>→</i>
+        <div><span>03</span><b>Sanitize</b><small>Safe original name + generated UUID.</small></div>
+        <i>→</i>
+        <div><span>04</span><b>Store</b><small>Saved in an external vault directory.</small></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>VEDA TECHNOLOGY · TASK 31</span>
+      <span>Built with Python + Flask</span>
+      <span>Local development workspace</span>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

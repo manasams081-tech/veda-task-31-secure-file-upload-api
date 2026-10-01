@@ -1,0 +1,2 @@
+VEDA Technology Task 31 sample file.
+This file is safe UTF-8 text for testing the secure upload API.

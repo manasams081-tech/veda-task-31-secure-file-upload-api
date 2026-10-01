@@ -1,0 +1,16 @@
+{
+  "task": "VEDA Technology Task 31",
+  "title": "Build a Secure File Upload API",
+  "stack": ["Python", "Flask", "Werkzeug", "HTML", "CSS", "JavaScript"],
+  "entrypoint": "app.py",
+  "run": "python app.py",
+  "url": "http://127.0.0.1:5000",
+  "api": {
+    "upload": "POST /api/upload",
+    "files": "GET /api/files",
+    "health": "GET /api/health"
+  },
+  "max_file_size_mb": 5,
+  "allowed_extensions": [".csv", ".gif", ".jpeg", ".jpg", ".pdf", ".png", ".txt"],
+  "storage_default": "~/veda_secure_uploads"
+}
